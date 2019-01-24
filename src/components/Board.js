@@ -4,8 +4,9 @@ import Cell from './Cell';
 class Board extends Component {
   state = {
     board: [],
-    height: 4,
-    width: 6,
+    height: 35,
+    width: 50,
+    isAlive: false,
   };
 
   componentDidMount() {
