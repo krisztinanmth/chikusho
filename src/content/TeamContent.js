@@ -1,27 +1,31 @@
 const team = [
   {
-    picUrl: '../pic/kriszta.png',
+    id: 1,
+    picUrl: 'kriszta.png',
     name: 'Németh Krisztina',
     github: 'https://github.com/krisztinanmth',
     linkedIn: 'https://www.linkedin.com/in/krisztina-nemeth-48296041/',
-    info: 'I like coding and having fun.'
+    info: 'I love cats and clean code.'
   },
   {
-    picUrl: '../pic/nori.png',
+    id: 2,
+    picUrl: 'nori.png',
     name: 'Puskás Nóra',
     github: 'https://github.com/norlandia',
     linkedIn: 'https://www.linkedin.com/in/norapuskas/',
-    info: 'Nori info.'
+    info: 'I love rats and pizza but not together.'
   },
   {
-    picUrl: '../pic/laz.png',
+    id: 3,
+    picUrl: 'laz.png',
     name: 'Daru László',
     github: 'https://github.com/ldaruu',
     linkedIn: 'https://www.linkedin.com/in/laszlodaru/',
-    info: 'Laz info.'
+    info: 'I love my Rabbit Jr.'
   },
   {
-    picUrl: '../pic/adam.png',
+    id: 4,
+    picUrl: 'adam.png',
     name: 'Gyarmati Ádám',
     github: 'https://github.com/adihipo',
     linkedIn: 'https://www.linkedin.com/in/%C3%A1d%C3%A1m-gyarmati-46a852135/',
