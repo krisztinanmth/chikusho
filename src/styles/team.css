@@ -1,0 +1,17 @@
+#team-container {
+  width: 800px;
+  height: 800px;
+  display: flex;
+}
+
+h1 {
+  text-align: center;
+  display: block;
+}
+
+div {
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  justify-content: space-evenly;
+}
