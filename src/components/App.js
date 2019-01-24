@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Team from './Team';
+import Team from '../containers/Team';
 
 const App = () => {
   return (
