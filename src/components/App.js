@@ -1,11 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Team from './Team';
+import Team from '../containers/Team';
+import BoardContainer from '../containers/BorardContainer';
+import '../styles/main.css';
 
 const App = () => {
   return (
     <Router>
-      <Route exact path="/team" component={Team} />
+      <div>
+        <Route exact path="/game" component={BoardContainer} />
+        <Route exact path="/team" component={Team} />
+      </div>
     </Router>
   );
 };
