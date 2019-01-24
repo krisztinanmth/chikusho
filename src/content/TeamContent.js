@@ -1,4 +1,4 @@
-const teamContent = [
+const team = [
   {
     picUrl: '../pic/kriszta.png',
     name: 'Németh Krisztina',
@@ -11,14 +11,14 @@ const teamContent = [
     name: 'Puskás Nóra',
     github: 'https://github.com/norlandia',
     linkedIn: 'https://www.linkedin.com/in/norapuskas/',
-    info: ''
+    info: 'Nori info.'
   },
   {
     picUrl: '../pic/laz.png',
     name: 'Daru László',
     github: 'https://github.com/ldaruu',
     linkedIn: 'https://www.linkedin.com/in/laszlodaru/',
-    info: ''
+    info: 'Laz info.'
   },
   {
     picUrl: '../pic/adam.png',
@@ -29,4 +29,4 @@ const teamContent = [
   }
 ] 
 
-export default teamContent;
+export default team;
