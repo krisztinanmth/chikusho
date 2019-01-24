@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import team from '../content/TeamContent';
-import '../styles/team.css';
+// import '../styles/team.css';
 
 class Team extends Component {
   state = {
