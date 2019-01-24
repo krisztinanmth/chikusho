@@ -1,11 +1,7 @@
 import React from 'react';
 
 const Cell = (props) => {
-  return (
-    <button>
-
-    </button>
-  );
+  return <button>Button</button>;
 };
 
 export default Cell;
