@@ -4,12 +4,12 @@
   display: flex;
 }
 
-h1 {
+#team-container h1 {
   text-align: center;
   display: block;
 }
 
-div {
+.img-div {
   width: 100px;
   height: 100px;
   background-size: cover;
