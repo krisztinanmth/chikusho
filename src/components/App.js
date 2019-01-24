@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Team from '../containers/Team';
 import BoardContainer from '../containers/BorardContainer';
+import '../styles/main.css';
 
 const App = () => {
   return (
