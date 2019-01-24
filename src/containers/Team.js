@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import team from '../content/TeamContent';
-// import '../styles/team.css';
+import '../styles/team.css';
 
 class Team extends Component {
   state = {
@@ -14,10 +14,10 @@ class Team extends Component {
         {this.state.team
         .map(member => 
         <div key={member.id}>
-          <div class="img-div" style={{backgroundImage: "url(" + member.picUrl + ")"}}></div>
+          <div style={{backgroundImage: "url(" + member.picUrl + ")"}}></div>
           <p>{member.name}</p>
-          <div class="img-div" style={{backgroundImage: "url(github.svg)"}}></div>  
-          <div class="img-div" style={{backgroundImage: "url(linkedin.svg)"}}></div>
+          <div style={{backgroundImage: "url(github.svg)"}}></div>  
+          <div style={{backgroundImage: "url(linkedin.svg)"}}></div>
           <p>{member.info}</p>
         </div>)}
       </div>
