@@ -4,30 +4,42 @@ import Cell from './Cell';
 class Board extends Component {
   state = {
     board: [],
-    height: 50,
-    width: 50,
+    size: 30,
   };
 
   componentDidMount() {
     this.createBoard();
-    setInterval(()=> this.generationChange(this.state.board), 5000); 
+    setInterval(()=> this.generationChange(this.state.board), 500); 
   }
 
   createBoard = () => {
     const board = [];
-    for (let i = 0; i < this.state.height; i++) {
+    for (let i = 0; i < this.state.size; i++) {
       let row = [];
-      for (let j = 0; j < this.state.width; j++) {
+      for (let j = 0; j < this.state.size; j++) {
         row.push({
           position: {
-            x: i,
-            y: j,
+            y: i,
+            x: j,
           },
           isAlive: false,
         });
       }
       board.push(row);
     }
+    board[12][13].isAlive = true;
+    board[12][14].isAlive = true;
+    board[12][15].isAlive = true;
+    board[12][16].isAlive = true;
+    board[12][17].isAlive = true;
+
+    board[14][13].isAlive = true;
+    board[16][13].isAlive = true;
+    board[16][14].isAlive = true;
+    board[16][15].isAlive = true;
+    board[16][16].isAlive = true;
+    board[16][17].isAlive = true;
+    board[14][17].isAlive = true;
 
     this.setState({
       board: board,
@@ -35,15 +47,12 @@ class Board extends Component {
   };
 
   generationChange = (board) => {
-    board[5][2].isAlive = true;
-    board[6][2].isAlive = true;
-    board[7][2].isAlive = true;
     const neighboursToChange = [];
-    for(let i = 0; i < this.state.height; i++) {
-      for(let j = 0; j < this.state.width; j++) {
-        let aliveNeighbours = this.countAliveNeighbours(board[i][j]);
-        if(this.fateOfCell(aliveNeighbours, board[i][j]) !== 'chikusho') {
-          neighboursToChange.push(this.fateOfCell(aliveNeighbours, board[i][j]));
+    for(let i = 0; i < this.state.size; i++) {
+      for(let j = 0; j < this.state.size; j++) {
+        let aliveNeighbours = this.countAliveNeighbours(board[j][i]);
+        if(this.fateOfCell(aliveNeighbours, board[j][i]) !== 'chikusho') {
+          neighboursToChange.push(this.fateOfCell(aliveNeighbours, board[j][i]));
         }
       }
     }
@@ -54,28 +63,31 @@ class Board extends Component {
 
   countAliveNeighbours = (cell) => {
     let counter = 0;
-    if(cell.position.y - 1 >= 0 && this.state.board[cell.position.y -1][cell.position.x].isAlive) {
+    const size = this.state.size;
+    const X = cell.position.x;
+    const Y = cell.position.y;
+    if(Y - 1 >= 0 && this.state.board[Y -1][X].isAlive) {
       counter++;
     }
-    if(cell.position.y - 1 >= 0 && cell.position.x + 1 < this.state.width && this.state.board[cell.position.y -1][cell.position.x + 1].isAlive) {
+    if(Y - 1 >= 0 && X + 1 < size && this.state.board[Y -1][X + 1].isAlive) {
       counter++;
     }
-    if(cell.position.y - 1 >= 0 && cell.position.x - 1 >= 0 && this.state.board[cell.position.y -1][cell.position.x -1].isAlive) {
+    if(Y - 1 >= 0 && X - 1 >= 0 && this.state.board[Y -1][X -1].isAlive) {
       counter++;
     }
-    if(cell.position.x + 1 < this.state.width && this.state.board[cell.position.y][cell.position.x + 1].isAlive) {
+    if(X + 1 < size && this.state.board[Y][X + 1].isAlive) {
       counter++;
     }
-    if(cell.position.x - 1 >= 0 && this.state.board[cell.position.y][cell.position.x - 1].isAlive) {
+    if(X - 1 >= 0 && this.state.board[Y][X - 1].isAlive) {
       counter++;
     }
-    if(cell.position.y + 1 < this.state.height && cell.position.x + 1 < this.state.height && this.state.board[cell.position.y + 1][cell.position.x + 1].isAlive) {
+    if(Y + 1 < size && X + 1 < size && this.state.board[Y + 1][X + 1].isAlive) {
       counter++;
     }
-    if(cell.position.y + 1 < this.state.height && cell.position.x - 1 >= 0 && this.state.board[cell.position.y + 1][cell.position.x - 1].isAlive) {
+    if(Y + 1 < size && X - 1 >= 0 && this.state.board[Y + 1][X - 1].isAlive) {
       counter++;
     }
-    if(cell.position.y + 1 < this.state.height && this.state.board[cell.position.y + 1][cell.position.x].isAlive) {
+    if(Y + 1 < size && this.state.board[Y + 1][X].isAlive) {
       counter++;
     }
     return counter;
@@ -92,8 +104,6 @@ class Board extends Component {
   }
 
   changeCells = (neighboursToChange, board) => {
-    console.log("neighboursToChange", neighboursToChange);
-    
     for(let neighbour of neighboursToChange) {
       board[neighbour.position.y][neighbour.position.x].isAlive = !board[neighbour.position.y][neighbour.position.x].isAlive;
     }
@@ -104,7 +114,6 @@ class Board extends Component {
   }
 
   render() {
-    console.log("board", this.state.board);
     return (
       <div className="board">
         {this.state.board.map((row, i) => (
