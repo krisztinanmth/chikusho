@@ -10,7 +10,7 @@ import '../styles/game.css';
 const App = () => {
   return (
     <Router>
-      <div>
+      <div className="main-container">
       <Route  path="/rules" component={Rules}/>
         <Route exact path="/game" component={BoardContainer} />
         <Route exact path="/team" component={Team} />

@@ -47,89 +47,101 @@ class Board extends Component {
 
   generationChange = (board) => {
     const neighboursToChange = [];
-    for(let i = 0; i < this.state.size; i++) {
-      for(let j = 0; j < this.state.size; j++) {
+    for (let i = 0; i < this.state.size; i++) {
+      for (let j = 0; j < this.state.size; j++) {
         let aliveNeighbours = this.countAliveNeighbours(board[j][i]);
-        if(this.fateOfCell(aliveNeighbours, board[j][i]) !== 'chikusho') {
-          neighboursToChange.push(this.fateOfCell(aliveNeighbours, board[j][i]));
+        if (this.fateOfCell(aliveNeighbours, board[j][i]) !== 'chikusho') {
+          neighboursToChange.push(
+            this.fateOfCell(aliveNeighbours, board[j][i])
+          );
         }
       }
     }
-    if(neighboursToChange.length !== 0) {
+    if (neighboursToChange.length !== 0) {
       this.changeCells(neighboursToChange, board);
     }
-  }
+  };
 
   countAliveNeighbours = (cell) => {
     let counter = 0;
     const size = this.state.size;
     const X = cell.position.x;
     const Y = cell.position.y;
-    if(Y - 1 >= 0 && this.state.board[Y -1][X].isAlive) {
+    if (Y - 1 >= 0 && this.state.board[Y - 1][X].isAlive) {
       counter++;
     }
-    if(Y - 1 >= 0 && X + 1 < size && this.state.board[Y -1][X + 1].isAlive) {
+    if (Y - 1 >= 0 && X + 1 < size && this.state.board[Y - 1][X + 1].isAlive) {
       counter++;
     }
-    if(Y - 1 >= 0 && X - 1 >= 0 && this.state.board[Y -1][X -1].isAlive) {
+    if (Y - 1 >= 0 && X - 1 >= 0 && this.state.board[Y - 1][X - 1].isAlive) {
       counter++;
     }
-    if(X + 1 < size && this.state.board[Y][X + 1].isAlive) {
+    if (X + 1 < size && this.state.board[Y][X + 1].isAlive) {
       counter++;
     }
-    if(X - 1 >= 0 && this.state.board[Y][X - 1].isAlive) {
+    if (X - 1 >= 0 && this.state.board[Y][X - 1].isAlive) {
       counter++;
     }
-    if(Y + 1 < size && X + 1 < size && this.state.board[Y + 1][X + 1].isAlive) {
+    if (
+      Y + 1 < size &&
+      X + 1 < size &&
+      this.state.board[Y + 1][X + 1].isAlive
+    ) {
       counter++;
     }
-    if(Y + 1 < size && X - 1 >= 0 && this.state.board[Y + 1][X - 1].isAlive) {
+    if (Y + 1 < size && X - 1 >= 0 && this.state.board[Y + 1][X - 1].isAlive) {
       counter++;
     }
-    if(Y + 1 < size && this.state.board[Y + 1][X].isAlive) {
+    if (Y + 1 < size && this.state.board[Y + 1][X].isAlive) {
       counter++;
     }
     return counter;
-  }
+  };
 
   fateOfCell = (aliveNeighbours, cell) => {
-    if(!cell.isAlive && aliveNeighbours === 3) {
+    if (!cell.isAlive && aliveNeighbours === 3) {
       return cell;
     }
-    if(cell.isAlive && (aliveNeighbours < 2 || aliveNeighbours >3)) {
+    if (cell.isAlive && (aliveNeighbours < 2 || aliveNeighbours > 3)) {
       return cell;
     }
     return 'chikusho';
-  }
+  };
 
   changeCells = (neighboursToChange, board) => {
-    for(let neighbour of neighboursToChange) {
-      board[neighbour.position.y][neighbour.position.x].isAlive = !board[neighbour.position.y][neighbour.position.x].isAlive;
+    for (let neighbour of neighboursToChange) {
+      board[neighbour.position.y][neighbour.position.x].isAlive = !board[
+        neighbour.position.y
+      ][neighbour.position.x].isAlive;
     }
-    
-     this.setState({
-       board: board,
-     })
-  }
 
-  onClickSTART= (e) => {
+    this.setState({
+      board: board,
+    });
+  };
+
+  onClickSTART = (e) => {
     e.preventDefault();
-    let start = () => {setInterval(()=> this.generationChange(this.state.board), 500);}
-    document.getElementsByClassName('start')[0].disabled= true;
+    let start = () => {
+      setInterval(() => this.generationChange(this.state.board), 500);
+    };
+    document.getElementsByClassName('start')[0].disabled = true;
     start();
-  }
+  };
 
   render() {
     return (
       <div className="board">
+        <button onClick={this.onClickSTART} className="start">
+          START
+        </button>
         {this.state.board.map((row, i) => (
           <div key={i}>
             {row.map((cell, j) => (
-              <Cell isAlive={this.state.board[i][j].isAlive}/>
+              <Cell isAlive={this.state.board[i][j].isAlive} />
             ))}
           </div>
         ))}
-        <button onClick={this.onClickSTART} className="start">START</button>
       </div>
     );
   }
