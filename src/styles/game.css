@@ -1,0 +1,37 @@
+.cell {
+  height: 18px;
+  width: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  outline: none;
+  border: 1px solid #27252b;
+  border-radius: 3px;
+  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+.alive {
+  background-color: #008d9b;
+  border: 1px solid #037a85;
+
+}
+
+.dead {
+  background-color: #302f35;
+}
+
+.board-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  font-family: 'Major Mono Display', monospace;
+
+  font-size: 60px;
+  padding-left: 5px;
+  color: #03a9b8;
+}

@@ -4,6 +4,8 @@ import Team from '../containers/Team';
 import Rules from '../containers/Rules'
 import BoardContainer from '../containers/BorardContainer';
 import '../styles/main.css';
+import '../styles/game.css';
+
 
 const App = () => {
   return (
