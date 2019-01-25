@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/cell.css';
 
 const Cell = ({cell, onClickCell}) => {
   

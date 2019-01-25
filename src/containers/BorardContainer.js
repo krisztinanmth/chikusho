@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Board from '../components/Board';
-import '../styles/boardContainer.css';
 
 class BoardContainer extends Component {
   state = {};
@@ -8,6 +7,7 @@ class BoardContainer extends Component {
   render() {
     return (
       <div className="board-container">
+        <h1 className="title">Game of Life</h1>
         <Board />
       </div>
     );
