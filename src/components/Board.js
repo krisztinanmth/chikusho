@@ -10,7 +10,7 @@ class Board extends Component {
 
   componentDidMount() {
     this.createBoard();
-    setInterval(()=> this.generationChange(this.state.board), 5000); 
+    setInterval(()=> this.generationChange(this.state.board), 5); 
   }
 
   createBoard = () => {
@@ -20,8 +20,8 @@ class Board extends Component {
       for (let j = 0; j < this.state.width; j++) {
         row.push({
           position: {
-            x: i,
-            y: j,
+            y: i,
+            x: j,
           },
           isAlive: false,
         });

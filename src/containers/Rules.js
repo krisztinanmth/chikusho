@@ -13,6 +13,7 @@ class Rules extends Component {
          <h1>Conway's Game of Life Rules</h1>
         { rules.map(rule =>
         <div key={rule.id}>
+            <h1>Rule #{rule.id}</h1>
             <h4>{rule.rule}</h4>
         </div>
         )}
