@@ -129,6 +129,17 @@ class Board extends Component {
     start();
   };
 
+  onClickCell = (e) => {
+    let xy = e.target.name.split(' ');
+    xy[0] = parseInt(xy[0]);
+    xy[1] = parseInt(xy[1]);
+    let board = this.state.board;
+    board[xy[1]][xy[0]].isAlive = !board[xy[1]][xy[0]].isAlive;
+    this.setState({
+      board: board,
+    })
+  }
+
   render() {
     return (
       <div className="board">
@@ -138,7 +149,8 @@ class Board extends Component {
         {this.state.board.map((row, i) => (
           <div key={i}>
             {row.map((cell, j) => (
-              <Cell isAlive={this.state.board[i][j].isAlive} />
+              <Cell key={j} cell={this.state.board[i][j]}
+              onClickCell={this.onClickCell}/>
             ))}
           </div>
         ))}
