@@ -7,7 +7,7 @@ class Team extends Component {
     team: team
   };
   render() {
-    console.log(this.state.team);
+    console.log('member', this.state.team);
     return (
       <div id="team-container">
         <h1>Team</h1>
