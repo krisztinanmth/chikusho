@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import rules from '../content/rules'
+import '../styles/rule.css'
 
 class Rules extends Component {
   state = {
@@ -9,12 +10,12 @@ class Rules extends Component {
   render() {
     const{rules} = this.state
      return(
-         <div>
+         <div className="rules">
          <h1>Conway's Game of Life Rules</h1>
         { rules.map(rule =>
         <div key={rule.id}>
             <h1>Rule #{rule.id}</h1>
-            <h4>{rule.rule}</h4>
+            <h3>{rule.rule}</h3>
         </div>
         )}
         </div>
