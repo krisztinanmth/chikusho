@@ -9,7 +9,6 @@ class Board extends Component {
 
   componentDidMount() {
     this.createBoard();
-    setInterval(()=> this.generationChange(this.state.board), 500); 
   }
 
   createBoard = () => {
@@ -113,6 +112,13 @@ class Board extends Component {
      })
   }
 
+  onClickSTART= (e) => {
+    e.preventDefault();
+    let start = () => {setInterval(()=> this.generationChange(this.state.board), 500);}
+    document.getElementsByClassName('start')[0].disabled= true;
+    start();
+  }
+
   render() {
     return (
       <div className="board">
@@ -123,6 +129,7 @@ class Board extends Component {
             ))}
           </div>
         ))}
+        <button onClick={this.onClickSTART} className="start">START</button>
       </div>
     );
   }
